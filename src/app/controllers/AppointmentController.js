@@ -1,8 +1,8 @@
 import * as Yup from 'yup';
 import { isBefore, startOfHour, parseISO, format, subHours } from 'date-fns';
 import pt from 'date-fns/locale/pt';
-import Queue from '../../lib/Queue';
 
+import Queue from '../../lib/Queue';
 import CancellationMail from '../jobs/CancellationMail';
 import User from '../models/User';
 import File from '../models/File';
@@ -16,7 +16,7 @@ class AppointmentController {
     const appointments = await Appointment.findAll({
       where: { user_id: req.userId, canceled_at: null },
       order: ['date'],
-      attributes: ['id', 'date'],
+      attributes: ['id', 'date', 'past', 'cancelable'],
       limit: 20,
       offset: (page - 1) * 20,
       include: [
