@@ -12,7 +12,6 @@ import AvailableController from './app/controllers/AvailableController';
 
 import authMiddleware from './app/middlewares/auth';
 import multerConfig from './config/multer';
-import app from './app';
 
 const routes = new Router();
 const upload = Multer(multerConfig);
